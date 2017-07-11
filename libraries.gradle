@@ -1,0 +1,21 @@
+ext {
+  minSdkVersion = 16
+  compileSdkVersion = 26
+  targetSdkVersion = compileSdkVersion
+  buildToolsVersion = '26.0.0'
+  versionMajor = 1
+  versionMinor = 0
+  versionPatch = 0
+  versionCode = versionMajor * 100000 + versionMinor * 100 + versionPatch
+  versionName = "${versionMajor}.${versionMinor}.${versionPatch}"
+
+  daggerVersion = "2.10"
+  javaxAnnotationVersion = "10.0-b28"
+
+
+  libraries = [dagger: "com.google.dagger:dagger:${daggerVersion}",]
+
+  aptLibraries = [daggerCompiler: "com.google.dagger:dagger-compiler:${daggerVersion}",]
+
+  provided = [javaxAnnotation: "org.glassfish:javax.annotation:${javaxAnnotationVersion}",]
+}
