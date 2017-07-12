@@ -50,5 +50,5 @@ class NetworkModule {
     @Provides
     @Singleton
     @Named("networkTimeoutInSeconds")
-    internal fun provideNetworkTimeoutInSeconds(): Long = Constants.NETWORK_CONNECTION_TIMEOUT
+    fun provideNetworkTimeoutInSeconds(): Long = Constants.NETWORK_CONNECTION_TIMEOUT
 }
