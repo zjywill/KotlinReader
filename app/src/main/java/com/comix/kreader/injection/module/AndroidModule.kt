@@ -2,9 +2,11 @@ package com.comix.kreader.injection.module
 
 import android.content.Context
 import android.content.res.Resources
+import com.comix.kreader.BuildConfig
 import com.comix.kreader.MainApplication
 import dagger.Module
 import dagger.Provides
+import javax.inject.Named
 import javax.inject.Singleton
 
 /**
@@ -12,6 +14,13 @@ import javax.inject.Singleton
  */
 @Module
 class AndroidModule(val application: MainApplication) {
+
+    @Provides
+    @Singleton
+    @Named("isDebug")
+    internal fun provideIsDebug(): Boolean {
+        return BuildConfig.DEBUG
+    }
 
     @Provides
     @Singleton

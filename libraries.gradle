@@ -11,11 +11,32 @@ ext {
 
   daggerVersion = "2.10"
   javaxAnnotationVersion = "10.0-b28"
+  roomVersion = "1.0.0-alpha3"
+  rxBindingVersion = "2.0.0"
+  rxJava2Version = "2.1.0"
+  rxAndroidVersion = "2.0.1"
+  retrofit2Version = "2.3.0"
+  gsonVersion = "2.7"
+  okhttpVersion = "3.4.1"
 
+  libraries = [dagger           : "com.google.dagger:dagger:${daggerVersion}",
+               room             : "android.arch.persistence.room:runtime:${roomVersion}",
+               roomRxJava       : "android.arch.persistence.room:rxjava2:${roomVersion}",
+               rxBinding        : "com.jakewharton.rxbinding2:rxbinding:${rxBindingVersion}",
+               rxKotlin2        : "io.reactivex.rxjava2:rxkotlin:${rxJava2Version}",
+               rxAndroid        : "io.reactivex.rxjava2:rxandroid:${rxAndroidVersion}",
+               retrofit2        : "com.squareup.retrofit2:retrofit:${retrofit2Version}",
+               retrofitConverter: "com.squareup.retrofit2:converter-gson:${retrofit2Version}",
+               retrofitAdapter  : "com.squareup.retrofit2:adapter-rxjava2:${retrofit2Version}",
+               gson             : "com.google.code.gson:gson:${gsonVersion}",
+               okhttp           : "com.squareup.okhttp3:okhttp:${okhttpVersion}",
+               okhttpWS         : "com.squareup.okhttp3:okhttp-ws:${okhttpVersion}",
+               okhttpLogging    : "com.squareup.okhttp3:logging-interceptor:${okhttpVersion}",]
 
-  libraries = [dagger: "com.google.dagger:dagger:${daggerVersion}",]
+  testLibraries = [roomTest: "android.arch.persistence.room:testing:${roomVersion}"]
 
-  aptLibraries = [daggerCompiler: "com.google.dagger:dagger-compiler:${daggerVersion}",]
+  aptLibraries = [daggerCompiler: "com.google.dagger:dagger-compiler:${daggerVersion}",
+                  roomCompiler  : "android.arch.persistence.room:compiler:${roomVersion}"]
 
   provided = [javaxAnnotation: "org.glassfish:javax.annotation:${javaxAnnotationVersion}",]
 }
