@@ -6,6 +6,7 @@ import android.arch.persistence.room.OnConflictStrategy
 import android.arch.persistence.room.Query
 import com.comix.kreader.model.entity.Post
 import io.reactivex.Flowable
+import io.reactivex.Observable
 
 
 /**

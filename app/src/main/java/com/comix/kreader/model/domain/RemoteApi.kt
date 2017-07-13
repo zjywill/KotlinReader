@@ -10,5 +10,5 @@ import retrofit2.http.Query
  */
 interface RemoteApi {
     @GET("chhreader/articles")
-    fun getArticles(@Query("page") after: String): Observable<List<Post>>
+    fun getArticles(@Query("page") after: Int): Observable<List<Post>>
 }
