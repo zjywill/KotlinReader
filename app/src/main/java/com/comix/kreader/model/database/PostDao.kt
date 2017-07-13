@@ -13,12 +13,15 @@ import io.reactivex.Flowable
  */
 @Dao
 interface PostDao {
-    @Query("SELECT * FROM Post")
-    fun getPosts(): Flowable<Post>
+    @Query("SELECT * FROM post")
+    fun getPosts(): Flowable<List<Post>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertPosts(posts: List<Post>)
 
-    @Query("DELETE FROM Post")
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertPost(posts: Post)
+
+    @Query("DELETE FROM post")
     fun deleteAllPosts()
 }

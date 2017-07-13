@@ -18,7 +18,7 @@ class AndroidModule(val application: MainApplication) {
     @Provides
     @Singleton
     @Named("isDebug")
-    internal fun provideIsDebug(): Boolean {
+    fun provideIsDebug(): Boolean {
         return BuildConfig.DEBUG
     }
 

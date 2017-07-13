@@ -38,7 +38,6 @@ dependencies {
   compile rootProject.ext.libraries.retrofitAdapter
   compile rootProject.ext.libraries.gson
   compile rootProject.ext.libraries.okhttp
-  compile rootProject.ext.libraries.okhttpWS
   compile rootProject.ext.libraries.okhttpLogging
   compile rootProject.ext.testLibraries.kotlinStdlib
 
@@ -52,5 +51,4 @@ dependencies {
 
   testCompile rootProject.ext.testLibraries.junit
   testCompile rootProject.ext.testLibraries.mockitoKotlin
-  testCompile rootProject.ext.testLibraries.kotlinStdlib
 }

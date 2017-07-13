@@ -18,7 +18,7 @@ ext {
   rxAndroidVersion = "2.0.1"
   retrofit2Version = "2.3.0"
   gsonVersion = "2.7"
-  okhttpVersion = "3.4.1"
+  okhttpVersion = "3.8.1"
   androidSupportVersion = "25.1.1"
 
   //Testing
@@ -36,7 +36,6 @@ ext {
                retrofitAdapter  : "com.squareup.retrofit2:adapter-rxjava2:${retrofit2Version}",
                gson             : "com.google.code.gson:gson:${gsonVersion}",
                okhttp           : "com.squareup.okhttp3:okhttp:${okhttpVersion}",
-               okhttpWS         : "com.squareup.okhttp3:okhttp-ws:${okhttpVersion}",
                okhttpLogging    : "com.squareup.okhttp3:logging-interceptor:${okhttpVersion}",]
 
   testLibraries = [roomTest: "android.arch.persistence.room:testing:${roomVersion}"]
