@@ -3,10 +3,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     >
-  <fragment
+  <TextView
       android:id="@+id/main_fragment"
-      android:name="com.comix.kreader.view.MainFragment"
       android:layout_width="match_parent"
       android:layout_height="match_parent"
+      android:text="dadfa"
+      android:textColor="@android:color/background_dark"
+      android:textSize="72dp"
       />
 </FrameLayout>
