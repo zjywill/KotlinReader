@@ -10,7 +10,7 @@ import com.google.gson.annotations.SerializedName
  * Created by junyizhang on 12/07/2017.
  */
 @Entity(tableName = "post")
-data class Post(@PrimaryKey(autoGenerate = true)
+data class Post(@PrimaryKey
                 @ColumnInfo(name = "id")
                 @SerializedName("id")
                 @Expose
