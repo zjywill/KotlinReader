@@ -16,7 +16,7 @@ class Loge {
             val sts = Thread.currentThread().stackTrace
             for (stsElement in sts) {
                 if (!stsElement.isNativeMethod && stsElement.className != Thread::class.java.name
-                        && stsElement.className != this.javaClass.name) {
+                        && stsElement.className != Loge::javaClass.name) {
                     return "*" + stsElement.fileName + ":" + stsElement.lineNumber + "/" + stsElement.methodName + "*"
                 }
             }
