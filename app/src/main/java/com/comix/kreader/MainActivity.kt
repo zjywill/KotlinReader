@@ -6,6 +6,7 @@ import com.comix.kreader.injection.component.ApplicationComponent
 import com.comix.kreader.model.database.LocalDatabase
 import com.comix.kreader.model.domain.RemoteApi
 import com.comix.kreader.utils.Loge
+import com.comix.kreader.viewmodel.PostViewModel
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
@@ -17,31 +18,21 @@ class MainActivity : BaseAppCompatActivity() {
     lateinit var localDatabase: LocalDatabase
 
     @Inject
-    lateinit var remoteApi: RemoteApi
+    lateinit var postViewModel: PostViewModel
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         Loge.d("onCreate")
-
         localDatabase.getPostDao().getPosts()
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe { posts ->
                     Loge.d("post size: " + posts.size)
                 }
-        Observable.create<Boolean> { sb ->
-            localDatabase.getPostDao().deleteAllPosts()
-            sb.onNext(true)
-            sb.onComplete()
-        }.flatMap { _ -> remoteApi.getArticles(1) }
-                .map { posts -> localDatabase.getPostDao().insertPosts(posts) }
-                .subscribeOn(Schedulers.newThread())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe {
-                    Loge.d("remote post size")
-                }
 
+        postViewModel.loadLatestPost()
     }
 
 

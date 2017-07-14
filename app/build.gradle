@@ -30,6 +30,8 @@ dependencies {
   compile rootProject.ext.libraries.dagger
   compile rootProject.ext.libraries.room
   compile rootProject.ext.libraries.roomRxJava
+  compile rootProject.ext.libraries.lifecycle
+  compile rootProject.ext.libraries.lifecycleExt
   compile rootProject.ext.libraries.rxKotlin2
   compile rootProject.ext.libraries.rxAndroid
   compile rootProject.ext.libraries.rxBinding
@@ -43,6 +45,7 @@ dependencies {
 
   kapt rootProject.ext.aptLibraries.daggerCompiler
   kapt rootProject.ext.aptLibraries.roomCompiler
+  kapt rootProject.ext.aptLibraries.lifecycleCompiler
   provided rootProject.ext.provided.javaxAnnotation
 
   implementation fileTree(dir: 'libs', include: ['*.jar'])
