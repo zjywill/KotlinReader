@@ -18,28 +18,17 @@ class PostViewModel @Inject constructor(val remoteApi: RemoteApi, val localDatab
 
     fun getPosts(): Flowable<List<Post>> = localDatabase.getPostDao().getPosts()
 
-    fun loadLatestPost() {
-        remoteApi.getArticles(1)
-                .flatMap { posts ->
-                    if (posts.isNotEmpty()) {
-                        deleteAllPosts()
+    fun loadLatestPost(): Observable<Boolean> =
+            remoteApi.getArticles(1)
+                    .flatMap { posts ->
+                        if (posts.isNotEmpty())
+                            localDatabase.getPostDao().deleteAllPosts()
+                        Observable.just(posts)
                     }
-                    Observable.just(posts)
-                }
-                .map { posts -> localDatabase.getPostDao().insertPosts(posts) }
-                .subscribeOn(Schedulers.newThread())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe {
-                    Loge.d("remote post got")
-                }
-    }
-
-    fun deleteAllPosts(): Observable<Boolean> = Observable.create<Boolean> {
-        sb ->
-        localDatabase.getPostDao().deleteAllPosts()
-        sb.onNext(true)
-        sb.onComplete()
-    }
+                    .flatMap { posts ->
+                        localDatabase.getPostDao().insertPosts(posts)
+                        Observable.just(true)
+                    }
 
     fun loadMorePosts(page: Int) {
         remoteApi.getArticles(page)
