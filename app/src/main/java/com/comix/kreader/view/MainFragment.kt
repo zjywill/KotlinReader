@@ -81,6 +81,7 @@ class MainFragment : BaseFragment() {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe { posts ->
                     mainRecyclerViewAdapter.posts = posts
+                    mainRecyclerViewAdapter.notifyDataSetChanged()
                     Loge.d("Post size: " + posts.size)
                 })
     }

@@ -14,7 +14,7 @@ import io.reactivex.Observable
  */
 @Dao
 interface PostDao {
-    @Query("SELECT * FROM post")
+    @Query("SELECT * FROM post ORDER BY postdate DESC")
     fun getPosts(): Flowable<List<Post>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
