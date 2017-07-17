@@ -2,6 +2,7 @@ package com.comix.kreader.view
 
 import android.content.Context
 import android.os.Bundle
+import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -23,6 +24,10 @@ class MainFragment : BaseFragment() {
 
     @Inject
     lateinit var postViewModel: PostViewModel
+    @Inject
+    lateinit var appContext: Context
+
+    lateinit var mainRecyclerViewAdapter: MainRecyclerViewAdapter
 
 
     val disposable: CompositeDisposable = CompositeDisposable()
@@ -51,6 +56,22 @@ class MainFragment : BaseFragment() {
                         swipe_view.isRefreshing = false
                     }
         }
+
+        list_view.apply {
+            setHasFixedSize(true)
+            val linearLayout = LinearLayoutManager(appContext)
+            layoutManager = linearLayout
+            clearOnScrollListeners()
+        }
+
+        initAdapter()
+    }
+
+    private fun initAdapter() {
+        if (list_view.adapter == null) {
+            mainRecyclerViewAdapter = MainRecyclerViewAdapter(appContext)
+            list_view.adapter = mainRecyclerViewAdapter
+        }
     }
 
     override fun onStart() {
@@ -59,6 +80,7 @@ class MainFragment : BaseFragment() {
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe { posts ->
+                    mainRecyclerViewAdapter.posts = posts
                     Loge.d("Post size: " + posts.size)
                 })
     }
