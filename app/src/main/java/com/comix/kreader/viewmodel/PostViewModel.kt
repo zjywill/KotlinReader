@@ -4,11 +4,8 @@ import android.arch.lifecycle.ViewModel
 import com.comix.kreader.model.database.LocalDatabase
 import com.comix.kreader.model.domain.RemoteApi
 import com.comix.kreader.model.entity.Post
-import com.comix.kreader.utils.Loge
 import io.reactivex.Flowable
 import io.reactivex.Observable
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
 /**
@@ -30,14 +27,11 @@ class PostViewModel @Inject constructor(val remoteApi: RemoteApi, val localDatab
                         Observable.just(true)
                     }
 
-    fun loadMorePosts(page: Int) {
-        remoteApi.getArticles(page)
-                .map { posts -> localDatabase.getPostDao().insertPosts(posts) }
-                .subscribeOn(Schedulers.newThread())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe {
-                    Loge.d("remote post got more: $page")
-                }
-    }
+    fun loadMorePosts(page: Int): Observable<Boolean> =
+            remoteApi.getArticles(page)
+                    .flatMap { posts ->
+                        localDatabase.getPostDao().insertPosts(posts)
+                        Observable.just(true)
+                    }
 
 }

@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.comix.kreader.R
 import com.comix.kreader.base.BaseFragment
+import com.comix.kreader.common.InfiniteScrollListener
 import com.comix.kreader.injection.component.ApplicationComponent
 import com.comix.kreader.utils.Loge
 import com.comix.kreader.viewmodel.PostViewModel
@@ -27,10 +28,12 @@ class MainFragment : BaseFragment() {
     @Inject
     lateinit var appContext: Context
 
-    lateinit var mainRecyclerViewAdapter: MainRecyclerViewAdapter
-
+    private var infiniteScrollListener: InfiniteScrollListener? = null
+    private var mainRecyclerViewAdapter: MainRecyclerViewAdapter? = null
+    private var page: Int = 1
 
     val disposable: CompositeDisposable = CompositeDisposable()
+    val loadDisposable: CompositeDisposable = CompositeDisposable()
 
     override fun onAttach(context: Context?) {
         super.onAttach(context)
@@ -49,10 +52,15 @@ class MainFragment : BaseFragment() {
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         swipe_view.setOnRefreshListener {
+            loadDisposable.clear()
+            if (infiniteScrollListener != null) {
+                infiniteScrollListener?.loading = false
+            }
             postViewModel.loadLatestPost()
                     .subscribeOn(Schedulers.newThread())
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe { _ ->
+                        page = 1
                         swipe_view.isRefreshing = false
                     }
         }
@@ -62,6 +70,8 @@ class MainFragment : BaseFragment() {
             val linearLayout = LinearLayoutManager(appContext)
             layoutManager = linearLayout
             clearOnScrollListeners()
+            infiniteScrollListener = InfiniteScrollListener({ requestMore() }, linearLayout)
+            addOnScrollListener(infiniteScrollListener)
         }
 
         initAdapter()
@@ -74,20 +84,36 @@ class MainFragment : BaseFragment() {
         }
     }
 
+    private fun requestMore() {
+        page++
+        Loge.d("requestMore page: " + page)
+        loadDisposable.add(postViewModel.loadMorePosts(page)
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe { _ ->
+                    if (infiniteScrollListener != null) {
+                        infiniteScrollListener?.loading = false
+                    }
+                })
+    }
+
     override fun onStart() {
         super.onStart()
         disposable.add(postViewModel.getPosts()
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe { posts ->
-                    mainRecyclerViewAdapter.posts = posts
-                    mainRecyclerViewAdapter.notifyDataSetChanged()
+                    if (mainRecyclerViewAdapter != null) {
+                        mainRecyclerViewAdapter?.posts = posts
+                        mainRecyclerViewAdapter?.notifyDataSetChanged()
+                    }
                     Loge.d("Post size: " + posts.size)
                 })
     }
 
     override fun onStop() {
         super.onStop()
+        loadDisposable.clear()
         disposable.clear()
     }
 }
