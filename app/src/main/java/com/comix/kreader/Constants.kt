@@ -4,8 +4,8 @@ package com.comix.kreader
  * Created by junyizhang on 11/07/2017.
  */
 object Constants {
-    val HTTP = "http://"
-    val API_HOST = "chhreader.zjywill.com:8001"
+    val HTTP = "https://"
+    val API_HOST = "www.zjywill.com:8002"
     val API_URL = HTTP + API_HOST + "/"
 
     val NETWORK_CONNECTION_TIMEOUT = 30L // 30 sec
