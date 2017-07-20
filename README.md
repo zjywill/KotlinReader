@@ -1,7 +1,7 @@
-#CHHReader Kotlin Version  
+# CHHReader Kotlin Version  
 
-###Pure Kotlin Code  
+### Pure Kotlin Code  
 
-###ROOM and RXKotlin 
- 
-###MVVM  
+### ROOM and RXKotlin
+
+### MVVM  
