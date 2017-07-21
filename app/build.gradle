@@ -41,6 +41,7 @@ dependencies {
   compile rootProject.ext.libraries.gson
   compile rootProject.ext.libraries.okhttp
   compile rootProject.ext.libraries.okhttpLogging
+  compile rootProject.ext.libraries.glide
   compile rootProject.ext.testLibraries.kotlinStdlib
 
   kapt rootProject.ext.aptLibraries.daggerCompiler
@@ -50,6 +51,7 @@ dependencies {
 
   implementation fileTree(dir: 'libs', include: ['*.jar'])
   compile 'com.android.support:appcompat-v7:25.4.0'
+  compile 'com.android.support:support-v4:25.4.0'
   compile 'com.android.support:recyclerview-v7:25.4.0'
 
   testCompile rootProject.ext.testLibraries.junit

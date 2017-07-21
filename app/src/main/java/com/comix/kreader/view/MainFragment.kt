@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import com.comix.kreader.R
 import com.comix.kreader.base.BaseFragment
 import com.comix.kreader.common.InfiniteScrollListener
+import com.comix.kreader.common.list.CustomDividerItemDecoration
 import com.comix.kreader.injection.component.ApplicationComponent
 import com.comix.kreader.utils.Loge
 import com.comix.kreader.viewmodel.PostViewModel
@@ -72,6 +73,7 @@ class MainFragment : BaseFragment() {
             clearOnScrollListeners()
             infiniteScrollListener = InfiniteScrollListener({ requestMore() }, linearLayout)
             addOnScrollListener(infiniteScrollListener)
+            addItemDecoration(CustomDividerItemDecoration(appContext, 1))
         }
 
         initAdapter()
