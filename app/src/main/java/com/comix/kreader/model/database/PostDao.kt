@@ -6,12 +6,8 @@ import android.arch.persistence.room.OnConflictStrategy
 import android.arch.persistence.room.Query
 import com.comix.kreader.model.entity.Post
 import io.reactivex.Flowable
-import io.reactivex.Observable
 
 
-/**
- * Created by junyizhang on 13/07/2017.
- */
 @Dao
 interface PostDao {
     @Query("SELECT * FROM post ORDER BY postdate DESC")

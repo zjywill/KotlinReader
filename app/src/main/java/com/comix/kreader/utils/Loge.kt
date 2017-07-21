@@ -3,9 +3,6 @@ package com.comix.kreader.utils
 import android.util.Log
 import com.comix.kreader.BuildConfig
 
-/**
- * Created by junyizhang on 14/07/2017.
- */
 class Loge {
     companion object Factory {
 

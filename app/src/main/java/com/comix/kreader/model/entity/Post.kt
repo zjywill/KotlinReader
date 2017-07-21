@@ -6,9 +6,6 @@ import android.arch.persistence.room.PrimaryKey
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
-/**
- * Created by junyizhang on 12/07/2017.
- */
 @Entity(tableName = "post")
 data class Post(@PrimaryKey
                 @ColumnInfo(name = "id")

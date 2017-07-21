@@ -3,9 +3,6 @@ package com.comix.kreader.common
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 
-/**
- * Created by junyizhang on 17/07/2017.
- */
 class InfiniteScrollListener(
         val func: () -> Unit,
         val layoutManager: LinearLayoutManager) : RecyclerView.OnScrollListener() {

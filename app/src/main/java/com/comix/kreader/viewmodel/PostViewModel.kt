@@ -8,9 +8,6 @@ import io.reactivex.Flowable
 import io.reactivex.Observable
 import javax.inject.Inject
 
-/**
- * Created by junyizhang on 13/07/2017.
- */
 class PostViewModel @Inject constructor(val remoteApi: RemoteApi, val localDatabase: LocalDatabase) : ViewModel() {
 
     fun getPosts(): Flowable<List<Post>> = localDatabase.getPostDao().getPosts()

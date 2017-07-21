@@ -7,10 +7,6 @@ import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
 
-
-/**
- * Created by junyizhang on 12/07/2017.
- */
 @Module
 class DatabaseModule {
 

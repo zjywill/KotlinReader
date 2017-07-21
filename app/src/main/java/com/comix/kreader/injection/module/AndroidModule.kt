@@ -24,10 +24,10 @@ class AndroidModule(val application: MainApplication) {
 
     @Provides
     @Singleton
-    fun provideContext(): Context = application.getApplicationContext()
+    fun provideContext(): Context = application.applicationContext
 
     @Provides
     @Singleton
-    fun provideResources(): Resources = application.getResources()
+    fun provideResources(): Resources = application.resources
 
 }
