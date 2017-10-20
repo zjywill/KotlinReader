@@ -6,49 +6,44 @@
     android:paddingBottom="16dp"
     android:paddingLeft="16dp"
     android:paddingRight="16dp"
-    android:paddingTop="16dp"
-    >
+    android:paddingTop="16dp">
 
-  <LinearLayout
-      android:id="@+id/content_text_panel"
-      android:layout_width="0dp"
-      android:layout_height="wrap_content"
-      android:layout_weight="6"
-      android:orientation="vertical"
-      >
-
-    <TextView
-        android:id="@+id/content_title_text"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/content_text_panel"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:ellipsize="end"
-        android:maxLines="2"
-        android:text="@string/app_name"
-        android:textColor="@android:color/primary_text_light"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        />
+        android:layout_weight="6"
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/content_sub_content_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="2dp"
-        android:ellipsize="end"
-        android:maxLines="3"
-        android:text="@string/app_name"
-        android:textColor="@android:color/secondary_text_light"
-        android:textSize="16sp"
-        />
-  </LinearLayout>
+        <TextView
+            android:id="@+id/content_title_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:text="@string/app_name"
+            android:textColor="@android:color/primary_text_light"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
-  <ImageView
-      android:id="@+id/content_ori_image"
-      android:layout_width="0dp"
-      android:layout_height="64dp"
-      android:layout_marginBottom="8dp"
-      android:layout_marginLeft="16dp"
-      android:layout_weight="3"
-      android:scaleType="centerCrop"
-      />
+        <TextView
+            android:id="@+id/content_sub_content_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:ellipsize="end"
+            android:maxLines="3"
+            android:text="@string/app_name"
+            android:textColor="@android:color/secondary_text_light"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/content_ori_image"
+        android:layout_width="0dp"
+        android:layout_height="64dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="16dp"
+        android:layout_weight="3"
+        android:scaleType="centerCrop" />
 </LinearLayout>

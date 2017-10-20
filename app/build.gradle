@@ -4,56 +4,57 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
 kapt {
-  generateStubs = true
+    generateStubs = true
 }
 
 android {
-  compileSdkVersion rootProject.ext.compileSdkVersion
-  buildToolsVersion rootProject.ext.buildToolsVersion
-  defaultConfig {
-    applicationId "com.comix.kreader"
-    minSdkVersion rootProject.ext.minSdkVersion
-    targetSdkVersion rootProject.ext.targetSdkVersion
-    versionCode rootProject.ext.versionCode
-    versionName rootProject.ext.versionName
-    testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-  }
-  buildTypes {
-    release {
-      minifyEnabled false
-      proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+    defaultConfig {
+        applicationId "com.comix.kreader"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode rootProject.ext.versionCode
+        versionName rootProject.ext.versionName
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
-  }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    buildToolsVersion rootProject.ext.buildToolsVersion
 }
 
 dependencies {
-  compile rootProject.ext.libraries.dagger
-  compile rootProject.ext.libraries.room
-  compile rootProject.ext.libraries.roomRxJava
-  compile rootProject.ext.libraries.lifecycle
-  compile rootProject.ext.libraries.lifecycleExt
-  compile rootProject.ext.libraries.rxKotlin2
-  compile rootProject.ext.libraries.rxAndroid
-  compile rootProject.ext.libraries.rxBinding
-  compile rootProject.ext.libraries.retrofit2
-  compile rootProject.ext.libraries.retrofitConverter
-  compile rootProject.ext.libraries.retrofitAdapter
-  compile rootProject.ext.libraries.gson
-  compile rootProject.ext.libraries.okhttp
-  compile rootProject.ext.libraries.okhttpLogging
-  compile rootProject.ext.libraries.glide
-  compile rootProject.ext.testLibraries.kotlinStdlib
+    compile rootProject.ext.libraries.dagger
+    compile rootProject.ext.libraries.room
+    compile rootProject.ext.libraries.roomRxJava
+    compile rootProject.ext.libraries.lifecycle
+    compile rootProject.ext.libraries.lifecycleExt
+    compile rootProject.ext.libraries.rxKotlin2
+    compile rootProject.ext.libraries.rxAndroid
+    compile rootProject.ext.libraries.rxBinding
+    compile rootProject.ext.libraries.retrofit2
+    compile rootProject.ext.libraries.retrofitConverter
+    compile rootProject.ext.libraries.retrofitAdapter
+    compile rootProject.ext.libraries.gson
+    compile rootProject.ext.libraries.okhttp
+    compile rootProject.ext.libraries.okhttpLogging
+    compile rootProject.ext.libraries.glide
+    compile rootProject.ext.testLibraries.kotlinStdlib
 
-  kapt rootProject.ext.aptLibraries.daggerCompiler
-  kapt rootProject.ext.aptLibraries.roomCompiler
-  kapt rootProject.ext.aptLibraries.lifecycleCompiler
-  provided rootProject.ext.provided.javaxAnnotation
+    kapt rootProject.ext.aptLibraries.daggerCompiler
+    kapt rootProject.ext.aptLibraries.roomCompiler
+    kapt rootProject.ext.aptLibraries.lifecycleCompiler
+    provided rootProject.ext.provided.javaxAnnotation
 
-  implementation fileTree(dir: 'libs', include: ['*.jar'])
-  compile 'com.android.support:appcompat-v7:25.4.0'
-  compile 'com.android.support:support-v4:25.4.0'
-  compile 'com.android.support:recyclerview-v7:25.4.0'
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'com.android.support:appcompat-v7:26.1.0'
+    compile 'com.android.support:support-v4:26.1.0'
+    compile 'com.android.support:recyclerview-v7:26.1.0'
 
-  testCompile rootProject.ext.testLibraries.junit
-  testCompile rootProject.ext.testLibraries.mockitoKotlin
+    testCompile rootProject.ext.testLibraries.junit
+    testCompile rootProject.ext.testLibraries.mockitoKotlin
 }

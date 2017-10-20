@@ -7,7 +7,9 @@ import android.view.ViewGroup
 import com.comix.kreader.R
 import com.comix.kreader.extensions.loadImage
 import com.comix.kreader.model.entity.Post
-import kotlinx.android.synthetic.main.list_item_view.view.*
+import kotlinx.android.synthetic.main.list_item_view.view.content_ori_image
+import kotlinx.android.synthetic.main.list_item_view.view.content_sub_content_text
+import kotlinx.android.synthetic.main.list_item_view.view.content_title_text
 
 /**
  * Created by junyizhang on 17/07/2017.

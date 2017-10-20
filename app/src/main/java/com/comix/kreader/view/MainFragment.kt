@@ -16,7 +16,8 @@ import com.comix.kreader.viewmodel.PostViewModel
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
-import kotlinx.android.synthetic.main.fragment_main.*
+import kotlinx.android.synthetic.main.fragment_main.list_view
+import kotlinx.android.synthetic.main.fragment_main.swipe_view
 import javax.inject.Inject
 
 /**
