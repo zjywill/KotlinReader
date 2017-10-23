@@ -33,12 +33,12 @@ class RemoteApiTest {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
         remoteApi = retrofit.create<RemoteApi>(RemoteApi::class.java)
-        Loge.d("tearDown")
+        Loge.d("setup")
     }
 
     @After
     fun tearDown() {
-        Loge.d("setup")
+        Loge.d("tearDown")
     }
 
     @Test
