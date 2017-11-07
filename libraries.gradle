@@ -12,7 +12,7 @@ ext {
   kotlinVersion = "1.1.51"
   daggerVersion = "2.11"
   javaxAnnotationVersion = "10.0-b28"
-  architectureComponentsVersion = "1.0.0-rc1"
+  architectureComponentsVersion = "1.0.0"
   rxBindingVersion = "2.0.0"
   rxJava2Version = "2.1.0"
   rxAndroidVersion = "2.0.1"
@@ -20,7 +20,7 @@ ext {
   gsonVersion = "2.7"
   okhttpVersion = "3.8.1"
   androidSupportVersion = "25.1.1"
-  glideVerison = "4.0.0-RC1"
+  glideVerison = "4.3.1"
 
   //Testing
   junitVersion = "4.12"
